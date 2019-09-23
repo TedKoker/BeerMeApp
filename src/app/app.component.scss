@@ -1,0 +1,46 @@
+
+
+div.main-search{
+    $inputFont: 2.5em;
+    $btnFont: 2.35em;
+    margin-top: 17%;
+    input {
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-right: 0px;
+    }
+    button{
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+
+    & .col {
+        padding-left:0em;
+        padding-right: 0em;
+    }
+}
+
+div.main-search-top{
+    margin-top: 3%;
+    animation: goUp;
+    animation-duration: 1s;
+    @keyframes goUp {
+        0%{
+            margin-top: 17%;
+        }
+        100%{
+            margin-top: 3%; 
+        }
+    }
+    button:focus{
+        box-shadow: none  !important;
+    }
+}
+
+
+
+
