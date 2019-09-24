@@ -1,10 +1,15 @@
 <div class="container main-search"  [ngClass]="{'main-search-top' : searchDone}" (window:resize)="onWindowCange()">
   <div class="row">
     <div class="col col-9">
-      <input type="text" class="form-control" placeholder="What do you looking for?" [style.fontSize]="sizeOfInput">    
+      <input type="text" class="form-control" [(ngModel)]="searchInput" placeholder="What do you looking for?" [style.fontSize]="sizeOfInput">    
     </div>
     <div class="col col-3">
       <button type="button" class="btn btn-outline-primary" (click)="searchClicked()" [style.fontSize]="sizeOfButton">Beer Me!</button>
+    </div>
+  </div>
+  <div class="row"  *ngIf="showBeerBody">
+    <div class="col">
+      <app-beerbody></app-beerbody>
     </div>
   </div>
 </div>

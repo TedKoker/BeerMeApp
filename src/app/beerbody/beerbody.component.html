@@ -1,0 +1,11 @@
+<div class="row" *ngIf="!isConnected()">
+    <div class="col">
+        <app-beerloading></app-beerloading>
+    </div>
+</div>
+<div class="row" *ngIf="isConnected()">
+    <div class="col">
+        <app-beerlist></app-beerlist>
+    </div>
+</div>
+

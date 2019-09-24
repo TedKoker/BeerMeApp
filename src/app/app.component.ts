@@ -1,6 +1,6 @@
-import { Component, ElementRef, asNativeElements } from '@angular/core';
-import { Button } from 'protractor';
+import { Component, ElementRef} from '@angular/core';
 import { resolve } from 'q';
+import { BeerService } from './sevices/beerService';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +9,15 @@ import { resolve } from 'q';
 })
 export class AppComponent {
   searchDone:boolean = false;
+  showBeerBody: boolean = false;
+  searchInput: string="";
   sizeOfInput: string = ""+window.innerWidth/5+"%";
   sizeOfButton: string =""+(window.innerWidth/5)+"%";
-  title = 'BeerMeApp';
 
   ngOnInit(){
   }
+
+  constructor(private beerService: BeerService){}
 
   onWindowCange(){
     if(!this.searchDone){
@@ -30,7 +33,6 @@ export class AppComponent {
   async searchClicked(){
     this.searchDone=true;
     let i = 5;
-    //make the interval async await
     let getSmaller = setInterval(()=>{
       if(i<8.8){
         i+=0.04;
@@ -39,10 +41,9 @@ export class AppComponent {
       }
       else clearInterval(getSmaller);
     },10);
-    await this.delay(1000);
-    console.log("end");
-    //this.sizeOfInput=""+window.innerWidth/8.8+"%";
-    //this.sizeOfButton=""+(window.innerWidth/8.8)+"%";
+    await this.delay(1100);
+    this.beerService.searchBeer(this.searchInput);
+    this.showBeerBody = true;
   }
 
   delay(ms: number) {
