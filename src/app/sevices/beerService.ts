@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { BeerDate } from '../models/beerData';
 
@@ -7,6 +7,7 @@ export class BeerService{
 
     private sourceUrl: string ="https://api.openbrewerydb.org/breweries/";
     private beerDataList: BeerDate[];
+    hideEvent = new EventEmitter<BeerDate>();
 
     constructor(private httpClient: HttpClient){}
     
@@ -26,5 +27,12 @@ export class BeerService{
         else{
             return null;
         }
+    }
+
+    hide(beerData: BeerDate){
+        console.log("enter emit");
+        let index: number = this.beerDataList.indexOf(beerData);
+        this.beerDataList.splice(index,1);
+        this.hideEvent.emit(beerData);
     }
 }

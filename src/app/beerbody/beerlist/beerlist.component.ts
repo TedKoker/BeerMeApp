@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { BeerService } from 'src/app/sevices/beerService';
 import { BeerDate } from 'src/app/models/beerData';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-beerlist',
@@ -15,6 +16,9 @@ export class BeerlistComponent {
 
   ngOnInit() {
     this.beerDataList=this.beerService.getBeerDataList();
+    this.beerService.hideEvent.subscribe(()=>{
+      this.beerDataList=this.beerService.getBeerDataList();
+    });
   }
 
 }
