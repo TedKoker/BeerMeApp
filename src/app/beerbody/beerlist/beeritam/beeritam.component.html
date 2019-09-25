@@ -1,24 +1,29 @@
-<div class="container beer-itam">
+<div class="container beer-itam" (window:resize)="initSize()">
     <div class="row">
         <div class="col-1/2">
             <a href="#" (click)="doOnClick()">X</a>
         </div>
         <div class="col-8">
-            <h1>{{beerData.name}}</h1>  
+            <h2 [style.fontSize]="headerTwo">{{beerData.name}}</h2>
         </div>
         <div class="col-3">
-            <h3>{{beerData.country}}</h3>
+            <h4 [style.fontSize]="headerFour">{{beerData.country}}</h4>
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <h2>{{beerData.city}}, <sub>{{beerData.state}}</sub>  </h2>
-            <h4>{{beerData.street}}</h4>
+        <div class="col middleText">
+            <h4 [style.fontSize]="headerFour">{{beerData.city}} - {{beerData.state}} </h4>
+            <h5 [style.fontSize]="headerFive">{{beerData.street}}</h5>
         </div>
     </div>
     <div class="row">
-        <div class="col" *ngIf="beerData.website_url!=''">
-            <h4><a [href]="beerData.website_url" target="_blank">{{beerData.name}} web</a></h4> <br>
+        <div class="col-1/2"></div>
+        <div class="col-10" *ngIf="beerData.website_url!=''">
+            <h5 [style.fontSize]="headerSix"><a [href]="beerData.website_url" target="_blank">{{beerData.name}} web</a></h5> <br>
+        </div>
+        <div class="col-11" *ngIf="beerData.website_url==''">
+             <br>
         </div>
     </div>
 </div>
+<div class="line"></div>

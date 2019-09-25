@@ -40,7 +40,7 @@ export class AppComponent {
         this.sizeOfButton=""+(window.innerWidth/i)+"%";
       }
       else clearInterval(getSmaller);
-    },10);
+    },1000/(window.innerWidth/(5+(window.innerWidth/320)-1))/10);
     await this.delay(1100);
     this.beerService.searchBeer(this.searchInput);
     this.showBeerBody = true;
