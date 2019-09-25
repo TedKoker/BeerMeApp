@@ -25,8 +25,8 @@ export class AppComponent {
       this.sizeOfButton =""+(window.innerWidth/5)+"%";
     }
     else{
-      this.sizeOfInput=""+(window.innerWidth/8.8)+"%";
-      this.sizeOfButton=""+(window.innerWidth/8.8)+"%";
+      this.sizeOfInput=""+(window.innerWidth/(5+(window.innerWidth/320)-1))+"%";
+      this.sizeOfButton=""+(window.innerWidth/(5+(window.innerWidth/320)-1))+"%";
     }
   }
 
@@ -34,7 +34,7 @@ export class AppComponent {
     this.searchDone=true;
     let i = 5;
     let getSmaller = setInterval(()=>{
-      if(i<8.8){
+      if(i<(5+(window.innerWidth/320)-1)){
         i+=0.04;
         this.sizeOfInput=""+(window.innerWidth/i)+"%";
         this.sizeOfButton=""+(window.innerWidth/i)+"%";

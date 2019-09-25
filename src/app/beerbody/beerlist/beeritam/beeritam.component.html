@@ -1,12 +1,24 @@
-<div class="row beer-itam">
-    <div class="col-1/2">
-        <a href="#" (click)="doOnClick()">X</a>
+<div class="container beer-itam">
+    <div class="row">
+        <div class="col-1/2">
+            <a href="#" (click)="doOnClick()">X</a>
+        </div>
+        <div class="col-8">
+            <h1>{{beerData.name}}</h1>  
+        </div>
+        <div class="col-3">
+            <h3>{{beerData.country}}</h3>
+        </div>
     </div>
-    <div class="col-8">
-        <h1>{{beerData.name}}</h1>
-        <h2>{{beerData.city}}, <sub>{{beerData.state}}</sub>  </h2>
+    <div class="row">
+        <div class="col">
+            <h2>{{beerData.city}}, <sub>{{beerData.state}}</sub>  </h2>
+            <h4>{{beerData.street}}</h4>
+        </div>
     </div>
-    <div class="col-3">
-        <h3>{{beerData.country}}</h3>
+    <div class="row">
+        <div class="col" *ngIf="beerData.website_url!=''">
+            <h4><a [href]="beerData.website_url" target="_blank">{{beerData.name}} web</a></h4> <br>
+        </div>
     </div>
 </div>
