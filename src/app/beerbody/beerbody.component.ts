@@ -12,6 +12,8 @@ export class BeerbodyComponent implements OnInit {
 
   beerDataList : BeerDate[]=null;
   beerSub: Subscription;
+  slideAnima: boolean=false;
+
   constructor(private beerService: BeerService) { }
 
   isConnected() : boolean{
@@ -26,14 +28,18 @@ export class BeerbodyComponent implements OnInit {
 
   ngOnInit() {
     this.beerSub = this.beerService.searchEvent.subscribe( ({beerlist: beerArray,message: msg}) =>{
-      if(msg=="enter"){
-        console.log(msg);
-        this.beerDataList=null;
+      if(this.beerDataList!=null){
+        this.slideAnima=true;
       }
-      else{
-        console.log(msg);
-        this.beerDataList=beerArray;
-      }
+      setTimeout(()=>{
+        this.slideAnima=false;
+        if(msg=="enter"){
+          this.beerDataList=null;
+        }
+        else{
+          this.beerDataList=beerArray;
+        }
+      }, 500);
     });
   }
 

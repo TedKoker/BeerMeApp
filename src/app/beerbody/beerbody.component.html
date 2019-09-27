@@ -3,7 +3,7 @@
         <app-beerloading></app-beerloading>
     </div>
 </div>
-<div class="row" *ngIf="isConnected()">
+<div class="row" *ngIf="isConnected()" [ngClass]="{'slideLeft':slideAnima}">
     <div class="col">
         <app-beerlist></app-beerlist>
     </div>
