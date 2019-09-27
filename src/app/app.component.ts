@@ -15,6 +15,7 @@ export class AppComponent {
   sizeOfButton: string =""+(window.innerWidth/5)+"%";
 
   ngOnInit(){
+   
   }
 
   constructor(private beerService: BeerService){}
@@ -32,16 +33,18 @@ export class AppComponent {
 
   async searchClicked(){
     this.searchDone=true;
-    let i = 5;
-    let getSmaller = setInterval(()=>{
-      if(i<(5+(window.innerWidth/320)-1)){
-        i+=0.04;
-        this.sizeOfInput=""+(window.innerWidth/i)+"%";
-        this.sizeOfButton=""+(window.innerWidth/i)+"%";
-      }
-      else clearInterval(getSmaller);
-    },1000/(window.innerWidth/(5+(window.innerWidth/320)-1))/10);
-    await this.delay(1100);
+    if(!this.showBeerBody){
+      let i = 5;
+      let getSmaller = setInterval(()=>{
+        if(i<(5+(window.innerWidth/320)-1)){
+          i+=0.04;
+          this.sizeOfInput=""+(window.innerWidth/i)+"%";
+          this.sizeOfButton=""+(window.innerWidth/i)+"%";
+        }
+        else clearInterval(getSmaller);
+      },1000/(window.innerWidth/(5+(window.innerWidth/320)-1))/10);
+      await this.delay(1100);
+  }
     this.beerService.searchBeer(this.searchInput);
     this.showBeerBody = true;
   }

@@ -1,0 +1,15 @@
+.slideLeft{
+    animation: slideLeftAniml;
+    animation-duration: 1s;
+
+   @keyframes slideIt {
+       0%{
+        transform: translateX(0%);
+       }
+
+       100%{
+           transform: translateX(-150%);
+       }
+   }
+
+}

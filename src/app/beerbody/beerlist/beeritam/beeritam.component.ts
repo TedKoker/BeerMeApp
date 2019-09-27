@@ -32,4 +32,8 @@ export class BeeritamComponent {
     this.beerServoce.hide(this.beerData);
   }
 
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
 }
