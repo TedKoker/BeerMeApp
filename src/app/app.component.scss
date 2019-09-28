@@ -22,6 +22,7 @@ div.main-search{
         padding-left:0em;
         padding-right: 0em;
     }
+    
 }
 
 div.main-search-top{
@@ -39,6 +40,54 @@ div.main-search-top{
     button:focus{
         box-shadow: none  !important;
     }
+
+    input:focus{
+        box-shadow: none  !important;
+    }
+}
+
+.backToStart{
+    animation: goDown;
+    animation-duration: 1s;
+    margin-top:17%;
+
+    @keyframes goDown {
+        0%{
+            margin-top: 3%;
+        }
+
+        100%{
+            margin-bottom: 17%;
+        }
+    }
+}
+
+.maxLength{
+    background-color: #ff8080;
+    animation: shake;
+    animation-duration: 100ms;
+    animation-iteration-count: 3;
+    }
+
+@keyframes shake {
+    0%{
+        transform: translateX(0%);
+    }
+    33%{
+        transform: translateX(1%);
+    }
+    66%{
+        transform: translateX(-1%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+
+button.maxLengthBtn{
+    animation: shake;
+    animation-duration: 100ms;
+    animation-iteration-count: 3;
 }
 
 

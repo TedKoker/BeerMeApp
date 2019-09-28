@@ -1,10 +1,14 @@
-<div class="container main-search"  [ngClass]="{'main-search-top' : searchDone}" (window:resize)="onWindowCange()">
+<div class="container main-search"  [ngClass]="{'main-search-top' : searchDone, 'backToStart' : backToStart}" 
+(window:resize)="onWindowCange()">
   <div class="row">
     <div class="col col-9">
-      <input type="text" class="form-control" [(ngModel)]="searchInput" (keyup.enter)="searchClicked()" placeholder="What do you looking for?" [style.fontSize]="sizeOfInput">    
+      <input #searchBar type="text" class="form-control" [(ngModel)]="searchInput" (keyup.enter)="searchClicked()"
+       (keyup.esc)="startPoint()" placeholder="What do you looking for?" [style.fontSize]="sizeOfInput" maxlength="35"
+       (input)="checkText()" [ngClass]="{'maxLength' : lengthWarning}">    
     </div>
     <div class="col col-3">
-      <button type="button" class="btn btn-outline-primary" (click)="searchClicked()" [style.fontSize]="sizeOfButton">Beer Me!</button>
+      <button type="button" class="btn btn-outline-primary" (click)="searchClicked()" [style.fontSize]="sizeOfButton"
+      [ngClass]="{'maxLengthBtn' : lengthWarning}">Beer Me!</button>
     </div>
   </div>
   <div class="row"  *ngIf="showBeerBody">
