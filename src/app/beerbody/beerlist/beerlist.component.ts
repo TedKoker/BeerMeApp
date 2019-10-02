@@ -16,6 +16,9 @@ export class BeerlistComponent {
   twoColPage:boolean=true;
   slideTop:boolean = true;
   toLeftAnima:boolean=false;
+  fromRightAnima:boolean=false;
+  toRightAnima:boolean=false;
+  fromLeftAnima:boolean=false;
   pages: number[];
   searchEvent: Subscription;
 
@@ -62,17 +65,26 @@ export class BeerlistComponent {
     let page:number = Number(this.pageSelector.nativeElement.value)+1;
     this.pageSelector.nativeElement.value=""+page;
     this.beerDataList=this.beerService.getBeerDataList(page);
+    this.fromRightAnima=true;
+    await this.delay(500);
+    this.fromRightAnima=false;
   }
 
-  prevPage() : void{
+  async prevPage(){
     /**
      * I need to give attention to this function after production mode is on..
      * It may not work couse of ExpressionChangedAfterItHasBeenCheckedError
      */
     this.slideTop=false;
+    this.toRightAnima=true;
+    await this.delay(500);
+    this.toRightAnima=false;
     let page:number = Number(this.pageSelector.nativeElement.value)-1;
     this.pageSelector.nativeElement.value=""+page;
     this.beerDataList=this.beerService.getBeerDataList(page);
+    this.fromLeftAnima=true;
+    await this.delay(500);
+    this.fromLeftAnima=false;
   }
 
   nextButtonDisabled() : boolean{

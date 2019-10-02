@@ -41,26 +41,56 @@ button:focus{
 }
 
 .toLeft{
-    animation: next;
-    animation-duration: 1s;
-    @keyframes next {
+    animation: toLeftAnima;
+    animation-duration: 0.6s;
+    @keyframes toLeftAnima {
         0%{
             transform: translateX(0%);
             opacity: 1;
         }
         100%{
-            transform: translateX(-50%);
+            transform: translateX(-12%);
             opacity: 0;
         }
     }
 }
 
-.toRight{
-    animation: next;
-    animation-duration: 1s;
-    @keyframes next {
+.fromRight{
+    animation: fromRightAnima;
+    animation-duration: 0.6s;
+    @keyframes fromRightAnima {
         0%{
-            transform: translateX(50%);
+            transform: translateX(12%);
+            opacity: 0;
+        }
+        100%{
+            transform: translateX(0%);
+            opacity: 1;
+        }
+    }
+}
+
+.toRight{
+    animation: toRightAnima;
+    animation-duration: 0.6s;
+    @keyframes toRightAnima {
+        0%{
+            transform: translateX(0%);
+            opacity: 1;
+        }
+        100%{
+            transform: translateX(12%);
+            opacity: 0;
+        }
+    }
+}
+
+.fromLeft{
+    animation: fromLeftAnima;
+    animation-duration: 0.6s;
+    @keyframes fromLeftAnima {
+        0%{
+            transform: translateX(-12%);
             opacity: 0;
         }
         100%{
