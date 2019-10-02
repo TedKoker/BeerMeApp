@@ -19,6 +19,8 @@ export class BeerlistComponent {
   fromRightAnima:boolean=false;
   toRightAnima:boolean=false;
   fromLeftAnima:boolean=false;
+  fadeOutAnima:boolean=false;
+  fadeInAnima:boolean=false;
   pages: number[];
   searchEvent: Subscription;
 
@@ -51,10 +53,16 @@ export class BeerlistComponent {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
-  changePage(event){
+  async changePage(event){
     this.slideTop=false;
+    this.fadeOutAnima=true;
+    await this.delay(500);
+    this.fadeOutAnima=false;
     this.beerDataList=[];
     this.beerDataList=this.beerService.getBeerDataList(event.target.value);
+    this.fadeInAnima=true;
+    await this.delay(500);
+    this.fadeInAnima=false;
   }
 
   async nextPage(){

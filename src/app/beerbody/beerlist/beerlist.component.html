@@ -1,6 +1,7 @@
 <div class="row" *ngFor="let beerData of beerDataList; trackBy: beerData?.id">
     <div class="col">
-        <div [ngClass]="{'slideAnima':slideTop, 'toLeft':toLeftAnima, 'fromRight':fromRightAnima, 'toRight':toRightAnima, 'fromLeft':fromLeftAnima}"
+        <div [ngClass]="{'slideAnima':slideTop, 'toLeft':toLeftAnima, 'fromRight':fromRightAnima, 'toRight':toRightAnima, 
+        'fromLeft':fromLeftAnima,'fadeOut':fadeOutAnima,'fadeIn':fadeInAnima}"
         ><app-beeritam [beerData]="beerData"></app-beeritam><br></div>
         <div class="line lineAnima" [ngClass]="{'lineAnima':slideTop}"></div>
     </div>

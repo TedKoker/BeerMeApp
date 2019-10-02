@@ -99,3 +99,29 @@ button:focus{
         }
     }
 }
+
+.fadeOut{
+    animation:fadeOutAnima;
+    animation-duration: 0.6s;
+    @keyframes fadeOutAnima {
+        0%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+        }
+    }
+}
+
+.fadeIn{
+    animation: fadeInAnima;
+    animation-duration: 1s;
+    @keyframes fadeInAnima {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+}
