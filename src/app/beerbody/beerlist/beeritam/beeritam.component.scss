@@ -1,7 +1,6 @@
 .beer-itam{
     margin-top: 5%;
-    animation: slideTop;
-    animation-duration: 1s;
+    
     
     a{
         display: inline;
@@ -11,34 +10,8 @@
         text-align: center;
     }
 
-    @keyframes slideTop {
-        0%{
-            transform: translateY(-150%);
-            opacity: 0;
-        }
-        100%{
-            transform: translateY(0%);
-            opacity: 1;
-        }
-    }
+    
 }
 
-.line{
-    background-color: black;
-    height: 1%;
-    width:86%;
-    animation: drowLine;
-    animation-duration: 1.3s;
 
-    @keyframes drowLine {
-        0%{
-            width: 0%;
-        }
-        50%{
-            width: 0%;
-        }
-        100%{
-            width: 86%;
-        }
-    }
-}
+

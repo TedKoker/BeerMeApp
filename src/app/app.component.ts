@@ -1,7 +1,6 @@
 import { Component, ElementRef, ViewChild} from '@angular/core';
 import { resolve } from 'q';
 import { BeerService } from './sevices/beerService';
-import { Key } from 'readline';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +15,12 @@ export class AppComponent {
   searchInput: string="";
   sizeOfInput: string = ""+window.innerWidth/5+"%";
   sizeOfButton: string =""+(window.innerWidth/5)+"%";
+  pages: number[];
 
   ngOnInit(){
-   
+    this.beerService.searchEvent.subscribe(({beerlist: beerArray,message: msg})=>{
+        this.pages=this.beerService.getPagesNumber();
+    });
   }
 
   constructor(private beerService: BeerService){}

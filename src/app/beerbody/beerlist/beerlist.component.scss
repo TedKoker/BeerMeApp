@@ -1,0 +1,71 @@
+button:focus{
+    box-shadow:none !important;
+}
+.slideAnima{
+    animation: slideTop;
+    animation-duration: 1s;
+}
+
+@keyframes slideTop {
+    0%{
+        transform: translateY(-150%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+.line{
+    background-color: black;
+    height: 1%;
+    width:86%;
+}
+
+.lineAnima{
+    animation: drowLine;
+    animation-duration: 1.2s;
+}
+
+@keyframes drowLine {
+    0%{
+        width: 0%;
+    }
+    50%{
+        width: 0%;
+    }
+    100%{
+        width: 86%;
+    }
+}
+
+.toLeft{
+    animation: next;
+    animation-duration: 1s;
+    @keyframes next {
+        0%{
+            transform: translateX(0%);
+            opacity: 1;
+        }
+        100%{
+            transform: translateX(-50%);
+            opacity: 0;
+        }
+    }
+}
+
+.toRight{
+    animation: next;
+    animation-duration: 1s;
+    @keyframes next {
+        0%{
+            transform: translateX(50%);
+            opacity: 0;
+        }
+        100%{
+            transform: translateX(0%);
+            opacity: 1;
+        }
+    }
+}

@@ -9,6 +9,9 @@ import { BeerlistComponent } from './beerbody/beerlist/beerlist.component';
 import { BeeritamComponent } from './beerbody/beerlist/beeritam/beeritam.component';
 import { BeerService } from './sevices/beerService';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpChacheService } from './sevices/cache.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -22,9 +25,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [BeerService],
+  providers: [
+    BeerService,
+    HttpChacheService
+  ],
   bootstrap: [AppComponent],
   
 })

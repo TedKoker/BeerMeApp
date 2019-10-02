@@ -1,5 +1,20 @@
-<div class="row" *ngFor="let beerData of beerDataList">
+<div class="row" *ngFor="let beerData of beerDataList; trackBy: beerData?.id">
     <div class="col">
-        <app-beeritam [beerData]="beerData"></app-beeritam>
+        <div [ngClass]="{'slideAnima':slideTop, 'toLeft':toLeftAnima}"><app-beeritam [beerData]="beerData"></app-beeritam><br></div>
+        <div class="line lineAnima" [ngClass]="{'lineAnima':slideTop}"></div>
     </div>
 </div>
+<div class="row" style="margin-top: 5%" (window:resize)="updatePar()">
+    <div class="col-4" style="text-align: right">
+        <button class="btn btn-outline-primary" (click)="prevPage()" [disabled]="prevButtonDisabled()">prev</button>
+    </div>
+    <div [ngClass]="{'col-2':twoColPage, 'col-4':!twoColPage}">
+        <select #pageSelector (change)="changePage($event)" class="browser-default custom-select">
+            <option *ngFor="let page of pages; let i=index" [value]="page">page {{page}}</option>
+        </select>
+    </div>
+    <div class="col-4">
+        <button class="btn btn-outline-primary" (click)="nextPage()" [disabled]="nextButtonDisabled()">next</button>
+    </div>
+</div>
+

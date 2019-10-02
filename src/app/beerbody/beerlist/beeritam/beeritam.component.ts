@@ -14,6 +14,7 @@ export class BeeritamComponent {
   headerFour: string;
   headerFive: string;
   headerSix: string;
+  
 
   constructor(private beerServoce : BeerService) { }
 
