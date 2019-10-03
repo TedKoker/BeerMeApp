@@ -4,7 +4,12 @@
     <div class="col col-9">
       <input #searchBar type="text" class="form-control" [(ngModel)]="searchInput" (keyup.enter)="searchClicked()"
        (keyup.esc)="startPoint()" placeholder="What do you looking for?" [style.fontSize]="sizeOfInput" maxlength="35"
-       (input)="checkText()" [ngClass]="{'maxLength' : lengthWarning}">    
+       (input)="checkText()" [ngClass]="{'maxLength' : warning}" [matAutocomplete]="complete">
+       <mat-autocomplete #complete="matAutocomplete">
+          <mat-option *ngFor="let autoComplete of autoCompletes" [value]="autoComplete.name">
+              {{autoComplete.name}}
+          </mat-option>
+       </mat-autocomplete>
     </div>
     <div class="col col-3">
       <button type="button" class="btn btn-outline-primary" (click)="searchClicked()" [style.fontSize]="sizeOfButton"

@@ -1,6 +1,6 @@
-import { Component, ElementRef, ViewChild} from '@angular/core';
-import { resolve } from 'q';
+import { Component} from '@angular/core';
 import { BeerService } from './sevices/beerService';
+import { AutoComplete } from './models/autoComplete';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +11,19 @@ export class AppComponent {
   searchDone:boolean = false;
   showBeerBody: boolean = false;
   backToStart: boolean = false;
-  lengthWarning: boolean = false;
+  warning: boolean = false;
   searchInput: string="";
   sizeOfInput: string = ""+window.innerWidth/5+"%";
   sizeOfButton: string =""+(window.innerWidth/5)+"%";
   pages: number[];
+  autoCompletes: AutoComplete[];
 
   ngOnInit(){
     this.beerService.searchEvent.subscribe(({beerlist: beerArray,message: msg})=>{
         this.pages=this.beerService.getPagesNumber();
+    });
+    this.beerService.autoCompleteEvent.subscribe(()=>{
+      this.autoCompletes=this.beerService.getAutoComplete();
     });
   }
 
@@ -37,6 +41,11 @@ export class AppComponent {
   }
 
   async searchClicked(){
+    this.autoCompletes=[];
+    if(this.searchInput==""){
+      this.warning=true;
+      return;
+    }
     this.backToStart=false;
     this.searchDone=true;
     if(!this.showBeerBody){
@@ -88,12 +97,12 @@ export class AppComponent {
   
   checkText(){
     if(this.searchInput.length==35){
-     
-      this.lengthWarning=true;
+      this.warning=true;
     }
     else{
-      this.lengthWarning=false;
+      this.warning=false;
     }
+    this.beerService.searchAutoComplete(this.searchInput);
   }
 
   maxLength(){

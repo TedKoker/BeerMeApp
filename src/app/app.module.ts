@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpChacheService } from './sevices/cache.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MateModule } from './mate.modul';
 
 @NgModule({
   declarations: [
@@ -19,18 +21,22 @@ import { environment } from '../environments/environment';
     BeerbodyComponent,
     BeerloadingComponent,
     BeerlistComponent,
-    BeeritamComponent
+    BeeritamComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    BrowserAnimationsModule,
+    MateModule
   ],
   providers: [
     BeerService,
-    HttpChacheService
+    HttpChacheService,
+    
   ],
   bootstrap: [AppComponent],
   

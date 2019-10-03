@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, EventEmitter, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { BeerService } from 'src/app/sevices/beerService';
 import { BeerDate } from 'src/app/models/beerData';
 import { Subscription } from 'rxjs';
@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class BeerlistComponent {
   
   @ViewChild("pageSelector", {static:true}) pageSelector: ElementRef;
+  test:ChangeDetectorRef;
   beerDataList: BeerDate[];
   outAnimation: boolean = false;
   twoColPage:boolean=true;
@@ -37,12 +38,12 @@ export class BeerlistComponent {
     this.beerService.hideEvent.subscribe(()=>{
       this.beerDataList=this.beerService.getBeerDataList();
     });
-
+    this.twoColPage=(window.innerWidth>=770);
     this.pages=this.beerService.getPagesNumber();
   }
 
   ngAfterViewInit() {
-    this.twoColPage=(window.innerWidth>=770);
+    //this.twoColPage=(window.innerWidth>=770);
   }
 
   updatePar(){

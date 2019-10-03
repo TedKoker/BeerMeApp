@@ -1,8 +1,5 @@
 <div class="container beer-itam" (window:resize)="initSize()">
     <div class="row">
-        <div class="col-1/2">
-            <a href="#" (click)="doOnClick()">&times;</a>
-        </div>
         <div class="col-8">
             <h2 [style.fontSize]="headerTwo">{{beerData.name}}</h2>
         </div>
@@ -17,7 +14,6 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-1/2"></div>
         <div class="col-10" *ngIf="beerData.website_url!=''">
             <h5 [style.fontSize]="headerSix"><a [href]="beerData.website_url" target="_blank">{{beerData.name}} web</a></h5> <br>
         </div>

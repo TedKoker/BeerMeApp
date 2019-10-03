@@ -72,4 +72,8 @@ export class BeerService{
             this.autoCompleteEvent.emit();
         });
     }
+
+    getAutoComplete(){
+        return this.autoComplete.slice(0,9);
+    }
 }

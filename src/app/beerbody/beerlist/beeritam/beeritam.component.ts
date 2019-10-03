@@ -29,10 +29,6 @@ export class BeeritamComponent {
     this.headerSix=""+(window.innerWidth/(6+(window.innerWidth/320)-1))+"%";
   }
 
-  doOnClick(){
-    this.beerServoce.hide(this.beerData);
-  }
-
   delay(ms: number) {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
