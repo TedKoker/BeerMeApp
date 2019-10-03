@@ -62,7 +62,7 @@ div.main-search-top{
     }
 }
 
-.maxLength{
+.warning{
     background-color: #ff8080;
     animation: shake;
     animation-duration: 100ms;
@@ -90,6 +90,9 @@ button.maxLengthBtn{
     animation-iteration-count: 3;
 }
 
+.completeOprion{
+    margin-bottom: 1px solid black;
+}
 
 
 

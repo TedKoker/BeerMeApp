@@ -8,15 +8,25 @@ import { AutoComplete } from './models/autoComplete';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  divider: number = 4+(window.innerWidth-320)/1200; //old divider = 5
+  /**
+   * Explantion about the formula:
+   * 4 = is the minimum number that the divider should be (in 320 px screen)
+   * window.innerWidth-320 = calculating the difference between the current window, and the smallest window (320 px screen)
+   * 1200 = for each defference of 1200 px the divider should grow in 1.
+   */
   searchDone:boolean = false;
   showBeerBody: boolean = false;
   backToStart: boolean = false;
   warning: boolean = false;
   searchInput: string="";
-  sizeOfInput: string = ""+window.innerWidth/5+"%";
-  sizeOfButton: string =""+(window.innerWidth/5)+"%";
+  sizeOfInput: string = ""+window.innerWidth/this.divider+"%";
+  sizeOfButton: string =""+(window.innerWidth/this.divider)+"%";
+  sizeOfAutocomplete: string=""+(window.innerWidth/(this.divider+(window.innerWidth/320)))+"%";
   pages: number[];
   autoCompletes: AutoComplete[];
+
+  
 
   ngOnInit(){
     this.beerService.searchEvent.subscribe(({beerlist: beerArray,message: msg})=>{
@@ -30,13 +40,15 @@ export class AppComponent {
   constructor(private beerService: BeerService){}
 
   onWindowCange(){
+    this.divider = 4+(window.innerWidth-320)/1200;
     if(!this.searchDone){
-      this.sizeOfInput=""+window.innerWidth/5+"%";
-      this.sizeOfButton =""+(window.innerWidth/5)+"%";
+      this.sizeOfInput=""+window.innerWidth/this.divider+"%";
+      this.sizeOfButton =""+(window.innerWidth/this.divider)+"%";
+      this.sizeOfAutocomplete=""+(window.innerWidth/this.divider)+"%";
     }
     else{
-      this.sizeOfInput=""+(window.innerWidth/(5+(window.innerWidth/320)-1))+"%";
-      this.sizeOfButton=""+(window.innerWidth/(5+(window.innerWidth/320)-1))+"%";
+      this.sizeOfInput=""+(window.innerWidth/(this.divider+(window.innerWidth/320)-1))+"%";
+      this.sizeOfButton=""+(window.innerWidth/(this.divider+(window.innerWidth/320)-1))+"%";
     }
   }
 
@@ -49,15 +61,15 @@ export class AppComponent {
     this.backToStart=false;
     this.searchDone=true;
     if(!this.showBeerBody){
-      let i = 5;
+      let i = this.divider;
       let getSmaller = setInterval(()=>{
-        if(i<(5+(window.innerWidth/320)-1)){
+        if(i<(this.divider+(window.innerWidth/320)-1)){
           i+=0.04;
           this.sizeOfInput=""+(window.innerWidth/i)+"%";
           this.sizeOfButton=""+(window.innerWidth/i)+"%";
         }
         else clearInterval(getSmaller);
-      },1000/(window.innerWidth/(5+(window.innerWidth/320)-1))/10);
+      },1000/(window.innerWidth/(this.divider+(window.innerWidth/320)-1))/10);
       await this.delay(1100);
   }
     this.beerService.searchBeer(this.searchInput);
@@ -68,17 +80,16 @@ export class AppComponent {
     this.backToStart=true;
     this.showBeerBody=false;
     this.searchDone=false;
-    let i = (5+(window.innerWidth/320)-1);
+    let i = (this.divider+(window.innerWidth/320)-1);
     let getSmaller = setInterval(()=>{
-        if(i>5){
+        if(i>this.divider){
           i-=0.04;
           this.sizeOfInput=""+(window.innerWidth/i)+"%";
           this.sizeOfButton=""+(window.innerWidth/i)+"%";
         }
         else clearInterval(getSmaller);
-      },1000/(window.innerWidth/(5+(window.innerWidth/320)-1))/10);
+      },1000/(window.innerWidth/(this.divider+(window.innerWidth/320)-1))/10);
     let eraseInput = setInterval(()=>{
-      //console.log(this.searchInput.split('').sp
       if(this.searchInput.length>0){
         this.searchInput=this.searchInput.split('').splice(0,this.searchInput.length-1).join('');
       }
@@ -87,8 +98,8 @@ export class AppComponent {
       }
     },this.searchInput.length<=10 ? 100 : 1000/this.searchInput.length)
     await this.delay(1100);
-    this.sizeOfInput=""+window.innerWidth/5+"%";
-    this.sizeOfButton =""+(window.innerWidth/5)+"%";
+    this.sizeOfInput=""+window.innerWidth/this.divider+"%";
+    this.sizeOfButton =""+(window.innerWidth/this.divider)+"%";
   }
 
   delay(ms: number) {
