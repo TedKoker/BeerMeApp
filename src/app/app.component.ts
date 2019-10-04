@@ -22,7 +22,7 @@ export class AppComponent {
   searchInput: string="";
   sizeOfInput: string = ""+window.innerWidth/this.divider+"%";
   sizeOfButton: string =""+(window.innerWidth/this.divider)+"%";
-  sizeOfAutocomplete: string=""+(window.innerWidth/(this.divider+(window.innerWidth/320)))+"%";
+  sizeOfAutocomplete: string=""+(window.innerWidth/this.divider/2)+"%";
   pages: number[];
   autoCompletes: AutoComplete[];
 
@@ -41,6 +41,7 @@ export class AppComponent {
 
   onWindowCange(){
     this.divider = 4+(window.innerWidth-320)/1200;
+    this.sizeOfAutocomplete=""+(window.innerWidth/this.divider)+"%";
     if(!this.searchDone){
       this.sizeOfInput=""+window.innerWidth/this.divider+"%";
       this.sizeOfButton =""+(window.innerWidth/this.divider)+"%";

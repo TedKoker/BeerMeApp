@@ -9,7 +9,6 @@ import { BeerlistComponent } from './beerbody/beerlist/beerlist.component';
 import { BeeritamComponent } from './beerbody/beerlist/beeritam/beeritam.component';
 import { BeerService } from './sevices/beerService';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpChacheService } from './sevices/cache.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +34,6 @@ import { MateModule } from './mate.modul';
   ],
   providers: [
     BeerService,
-    HttpChacheService,
     
   ],
   bootstrap: [AppComponent],

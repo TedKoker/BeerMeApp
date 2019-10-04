@@ -6,14 +6,14 @@
        (keyup.esc)="startPoint()" placeholder="What do you looking for?" [style.fontSize]="sizeOfInput" maxlength="35"
        (input)="checkText()" [ngClass]="{'warning' : warning}" [matAutocomplete]="complete">
        <mat-autocomplete #complete="matAutocomplete">
-          <mat-option *ngFor="let autoComplete of autoCompletes" [value]="autoComplete.name" >
+          <mat-option *ngFor="let autoComplete of autoCompletes" [value]="autoComplete.name">
               {{autoComplete.name}}
           </mat-option>
        </mat-autocomplete>
     </div>
     <div class="col col-3">
       <button type="button" class="btn btn-outline-primary" (click)="searchClicked()" [style.fontSize]="sizeOfButton"
-      [ngClass]="{'maxLengthBtn' : lengthWarning}">Beer Me!</button>
+      [ngClass]="{'btnWarning' : warning}">Beer Me!</button>
     </div>
   </div>
   <div class="row"  *ngIf="showBeerBody">

@@ -37,8 +37,8 @@ export class BeerService{
         if(this.beerDataList!=null && this.beerDataList.length>0){
             let startIndex: number = (pageNumber*10-10);
             let lastIndex: number = pageNumber<this.getPagesNumber().length ? startIndex+9: startIndex+this.beerDataList.length-startIndex;
-            console.log("first Index:"+startIndex);
-            console.log("last Index:"+lastIndex);
+            //console.log("first Index:"+startIndex);
+            //console.log("last Index:"+lastIndex);
             return this.beerDataList.slice(startIndex, lastIndex);
         }
         else{
